@@ -1,6 +1,6 @@
-# Trabalho Prático 1 - Programação Orientada a Objetos
-**Aluno:** [Seu Nome]  
-**Matrícula:** [Sua Matrícula]  
+# Trabalho Prático - Programação Orientada a Objetos
+**Aluno:** [Victor Hugo Araújo de Vasconcelos]  
+**Matrícula:** [20250019250]  
 **Turma:** 2026.1 - Prof. Carlos Eduardo C. F. Batista  
 
 ## ⚔️ Domínio Escolhido: RPG Engine

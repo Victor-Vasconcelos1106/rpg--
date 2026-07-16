@@ -1,6 +1,5 @@
 # Trabalho Prático 2 - Programação Orientada a Objetos
-**Aluno:** [Seu Nome]  
-**Matrícula:** [Sua Matrícula]  
+**Aluno:** Victor Vasconcelos 
 **Turma:** 2026.1 - Prof. Carlos Eduardo C. F. Batista  
 
 ## ⚔️ Domínio Escolhido: RPG Engine (Continuação TP1)

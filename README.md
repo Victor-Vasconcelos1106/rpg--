@@ -1,10 +1,10 @@
-# Trabalho Prático - Programação Orientada a Objetos
-**Aluno:** [Victor Hugo Araújo de Vasconcelos]  
-**Matrícula:** [20250019250]  
+# Trabalho Prático 2 - Programação Orientada a Objetos
+**Aluno:** [Seu Nome]  
+**Matrícula:** [Sua Matrícula]  
 **Turma:** 2026.1 - Prof. Carlos Eduardo C. F. Batista  
 
-## ⚔️ Domínio Escolhido: RPG Engine
-O sistema consiste num motor simplificado de gestão para jogos de RPG (Role-Playing Games). A arquitetura lida com o ciclo de vida e encapsulamento de personagens (`Character`), os seus equipamentos ativos de combate (`Item`), a organização de heróis em equipas dinâmicas (`Party`) e o rastreamento de missões com as suas respetivas recompensas através de um diário de jornadas (`QuestLog`).
+## ⚔️ Domínio Escolhido: RPG Engine (Continuação TP1)
+O projeto estende o motor de RPG do TP1 adicionando hierarquias de herança, despacho polimórfico dinâmico e interfaces puras.
 
 ---
 
@@ -13,34 +13,41 @@ O sistema consiste num motor simplificado de gestão para jogos de RPG (Role-Pla
 ```mermaid
 classDiagram
     class Character {
+        <<abstract>>
         -string name_
         -int health_
-        -int strength_
         -unique_ptr~Item~ equipped_item_
-        +name() string
-        +health() int
-        +equipped_item() Item*
-        +heal_points(int amount) void
+        +calculate_power()* int
+        +show_status() void
     }
+
+    class Attackable {
+        <<interface>>
+        +take_damage(int amount)* void
+    }
+
+    class Warrior {
+        -int armor_rating_
+        +calculate_power() int
+        +show_status() void
+        +take_damage(int amount) void
+    }
+
+    class Mage {
+        <<final>>
+        -int mana_points_
+        +calculate_power() int
+        +show_status() void
+        +take_damage(int amount) void
+    }
+
     class Item {
         -string name_
         -int bonus_damage_
-        +name() string
-        +bonus_damage() int
-        +calculate_stat_scaling(int attribute_points) int
-    }
-    class Party {
-        -string party_name_
-        -vector~Character*~ members_
-        +join_party(Character* hero) void
-        +show_status() void
-    }
-    class QuestLog {
-        -string active_quest_
-        -int experience_reward_
-        +active_quest() string
-        +accept_quest(string title, int xp) void
     }
 
-    Character "1" *-- "1" Item : Composição (O item pertence exclusivamente ao herói)
-    Party "1" o-- "0..*" Character : Agregação (O grupo referencia heróis independentes)
+    Character <|-- Warrior : Herança
+    Attackable <|.. Warrior : Realização
+    Character <|-- Mage : Herança
+    Attackable <|.. Mage : Realização
+    Character "1" *-- "1" Item : Composição
